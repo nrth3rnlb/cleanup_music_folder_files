@@ -8,19 +8,11 @@ recursive_default = true
 
 # File groups
 pdf_exts = [".pdf"]
-aux_exts = [".cue", ".log"]
+aux_exts = [".cue", ".log", ".m3u", ".m3u8"]
 
 # Sidecars: extensions and filename prefixes
-sidecar_exts = [".lrc", ".txt", ".lyrics", ".cdtext", ".m3u", ".m3u8"]
+sidecar_exts = [".lrc", ".txt", ".lyrics"]
 sidecar_prefixes = ["cover", "albumart", "folder", "front", "back", "poster"]
-
-# Format categories
-uncompressed_exts = [".wav", ".aiff", ".aif", ".pcm", ".sid", ".mod"]
-lossless_exts = [".flac", ".alac", ".wv", ".tta", ".ape"]
-lossy_exts = [".mp3", ".aac", ".m4a", ".ogg", ".opus"]
-
-# Tie-break preferences for lossy formats
-preferred_lossy_order = [".m4a", ".mp3", ".ogg", ".opus", ".aac"]
 
 # Optional: paths to exclude (relative to the root path)
 exclude_dirs = ["Samples", "Artwork"]
