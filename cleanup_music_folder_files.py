@@ -159,7 +159,12 @@ def get_mime_type(path: str) -> Optional[str]:
 
 def is_audio(path: str) -> bool:
     t = get_mime_type(path)
-    return bool(t and t.startswith('audio'))
+    if t and t.startswith('audio'):
+        return True
+    # python-magic detects .m4a as video/mp4, but extension indicates audio
+    if t == 'video/mp4' and path.lower().endswith('.m4a'):
+        return True
+    return False
 
 
 def file_mtime(path: str) -> float:
