@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v1.1.2 (2025-11-13)
+
+### Bug Fixes
+
+- **audio**: Detect m4a files as audio despite video/mp4 MIME type
+  ([`27513b5`](https://github.com/nrth3rnlb/cleanup_music_folder_files/commit/27513b52ed1ad72de9956395cba05bc0b69e8ee4))
+
+### Documentation
+
+- **readme**: Update config paths and installation instructions
+  ([`4887b18`](https://github.com/nrth3rnlb/cleanup_music_folder_files/commit/4887b181cacc15c5d0b4c70800454dcfa42dae50))
+
+
 ## v1.1.1 (2025-11-13)
 
 ### Bug Fixes
