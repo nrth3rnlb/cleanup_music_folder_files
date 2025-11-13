@@ -7,7 +7,7 @@ Configuration:
  - TOML config is loaded from (in order):
      1) CLI --config / -c
      2) ./config.toml
-     3) ~/.config/rename_music/rename_music.toml
+     3) ~/.config/cleanup_music_folder_files/config.toml
 
 Usage:
   python cleanup_music_folder_files.py --path /path/to/music -c ./config.toml -v -r
@@ -666,7 +666,7 @@ def find_config_paths(given_path: Optional[str] = None) -> List[str]:
         os.path.join(
             home,
             '.config',
-            'rename_music',
+            'cleanup_music_folder_files',
             'config.toml'))
     return candidates
 
@@ -791,7 +791,7 @@ def main():
 
     # load config if available
     if args.config or os.path.isfile(os.path.abspath('./config.toml')) or os.path.isfile(
-            os.path.join(os.path.expanduser('~'), '.config', 'rename_music', 'config.toml')):
+            os.path.join(os.path.expanduser('~'), '.config', 'cleanup_music_folder_files', 'config.toml')):
         try:
             load_and_apply_config(args.config, verbose_level)
         except Exception as e:
@@ -800,10 +800,10 @@ def main():
     # show optional-deps hints (always)
     missing = []
     if not HAVE_PYPDF2:
-        missing.append(("PyPDF2", "pip install PyPDF2"))
+        missing.append(("PyPDF2", "pipx inject cleanup_music_folder_files PyPDF2"))
     if not HAVE_MAGIC:
         missing.append(
-            ("python-magic", "pip install python-magic (or python-magic-bin on Windows)"))
+            ("python-magic", "pipx inject cleanup_music_folder_files python-magic"))
 
     if missing:
         brief("\nIMPORTANT: Optional dependencies are missing (recommended):")
