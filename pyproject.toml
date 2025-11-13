@@ -1,0 +1,56 @@
+[project]
+name = "cleanup_music_folder_files"
+dynamic = ["version"]
+description = "Tidies up music folders by removing files that do not fit."
+authors = [
+    { name = "nrth3rnlb" }
+]
+readme = "README.md"
+keywords = ["music", "cleanup", "files", "organize", "audio"]
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+dependencies = [
+    "PyPDF2>=3.0.0",
+    "tomli>=2.0.1",
+    "python-magic>=0.4.27",
+]
+
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "setuptools_scm",
+]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+cleanup_music_folder_files = "cleanup_music_folder_files:main"
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "node-and-date"
+
+[project.optional-dependencies]
+build = [
+    "python-semantic-release>=7.23.3",
+    "commitizen>=2.32.2",
+    "pre-commit>=3.6",
+]
+
+[tool.pdm.scripts]
+precommit-install = "pre-commit install -t commit-msg"
+
+[tool.semantic_release]
+build_command = "pip install build && python -m build"
+tag_format = "v{version}"
+upload_to_release = false
+commit_parser = "conventional"
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+output_format = "md"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.0"
+tag_format = "v$version"
+update_changelog_on_bump = false

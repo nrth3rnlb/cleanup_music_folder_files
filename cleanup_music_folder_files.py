@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 cleanup_music_folder_files.py
@@ -15,16 +14,21 @@ Usage:
 Dry-run is default; use --force / -f to apply changes.
 """
 from __future__ import annotations
-import os
-import sys
-import re
+
 import argparse
-import mimetypes
 import hashlib
+import mimetypes
+import os
+import re
+import sys
 from collections import defaultdict
+from importlib.metadata import version, PackageNotFoundError
 from typing import List, Dict, Set, Optional, Tuple, Union
 
-from orca.ax_utilities import AXUtilities
+try:
+    __version__ = version("cleanup_music_folder_files")
+except PackageNotFoundError:
+    __version__ = "0.0.0+unknown"
 
 # TOML loader: prefer stdlib tomllib (3.11+), fallback to tomli if available
 try:
@@ -740,11 +744,15 @@ def merge_config_into_globals(cfg: dict) -> None:
 
 # ---------- CLI / main ----------
 
-
 def main():
     global ROOT_BASE
     parser = argparse.ArgumentParser(description="Clean and rename music folders (Audio, Sidecars, PDFs, CUE/LOG).",
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
+
+    parser.add_argument(
+        '--version',
+        action='version',
+        version=f'%(prog)s {__version__}')
     parser.add_argument(
         '--path',
         '-p',
