@@ -44,7 +44,7 @@ build_command = "pip install build && python -m build"
 tag_format = "v{version}"
 upload_to_release = false
 commit_parser = "conventional"
-commit_message = "bump(release): {version}"
+commit_message = "chore(release): {version}"
 
 [tool.semantic_release.changelog.default_templates]
 changelog_file = "CHANGELOG.md"
